@@ -2,7 +2,10 @@
 Remove Windows 365 licenses if a cloud PC is not used anymore.
 
 ## DESCRIPTION
-This script will revoke licenses from users that have not used their Windows 365 Cloud PC for a certain amount of days. By default, it will run in simulation mode to notify you of the changes you want to make. Disable simulation mode to actually remove the users from the group. By default, it will only check to remove a license if the cloud PC is not used for more than 30 days. You can change this value by providing the `-daysSinceLastConnection` parameter. Make sure to register an app in Azure AD and give it these Graph Permissions:
+This script will revoke licenses from users that have not used their Windows 365 Cloud PC for a certain amount of days. By default, it will run in simulation mode to notify you of the changes you want to make. Disable simulation mode to actually remove the users from the group. By default, it will only check to remove a license if the cloud PC is not used for more than 30 days. You can change this value by providing the `-daysSinceLastConnection` parameter. 
+
+## REQUIREMENTS
+Make sure to register an app in Entra ID and give it these Graph Permissions:
 - `DeviceManagementManagedDevices.Read.All`
 - `GroupMember.ReadWrite.All`
 - `CloudPC.Read.All`
