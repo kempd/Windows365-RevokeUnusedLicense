@@ -27,9 +27,9 @@
   Purpose/Change: Initial script development
   
 .EXAMPLE
-  Run in sumulation mode with default paramaters
+  Run in sumulation mode with default parameters
   .\Windows365-RevokeUnusedLicense.ps1 -app_id "<app_id>" -app_secret "<app_secret>" -tenantId "<tenantId>"
-  Run in sumulation mode with with another amount of days since last connection 
+  Run in simulation mode with with another amount of days since last connection 
   .\Windows365-RevokeUnusedLicense.ps1 -app_id "<app_id>" -app_secret "<app_secret>" -tenantId "<tenantId>" -daysSinceLastConnection 60
   Run the script to actually remove the users from the group
   .\Windows365-RevokeUnusedLicense.ps1 -app_id "<app_id>" -app_secret "<app_secret>" -tenantId "<tenantId>" -simulationMode $false
@@ -56,11 +56,8 @@ $today = Get-Date
 
 #-----------------------------------------------------------[Functions]------------------------------------------------------------
 function get-graphToken() {
-
     # $token = (Get-AzAccessToken -ResourceUrl https://graph.microsoft.com).Token
-    
     # Return "Bearer " + ($token).ToString()
-
     param(
         [string]$TenantID,
         [string]$ClientID,
