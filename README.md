@@ -21,6 +21,12 @@ Provide the app secret of the Entra AD app that has the required permissions.
 ### `$tenantId`
 Provide the tenant ID of the tenant where the app is registered.
 
+### `$daysSinceLastConnection`
+provide the amount of days since the last connection of the cloud pc to revoke the license, default is 30
+
+### `$simulationMode`
+provide if the script should run in simulation mode or not, default is true
+
 ## INPUTS
 None
 

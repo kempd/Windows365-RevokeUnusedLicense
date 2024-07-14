@@ -16,6 +16,10 @@
     provide the app secret of the Entra AD app that has the required permissions
 .PARAMETER $tenantId
     provide the tenant id of the tenant where the app is registered
+.PARAMETER $daysSinceLastConnection
+    provide the amount of days since the last connection of the cloud pc to revoke the license, default is 30
+.PARAMETER $simulationMode
+    provide if the script should run in simulation mode or not, default is true
 .INPUTS
   none
 .OUTPUTS
