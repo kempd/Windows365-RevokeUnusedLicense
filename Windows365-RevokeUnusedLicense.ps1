@@ -487,6 +487,7 @@ if ($graphtoken){
                 $possibleAssignments = @(($allProvisioningPolicies | ? {$_.id -eq $unusedCloudPC.provisioningPolicyId}).assignments)
 
                 #Check if the user is in the active assignments and check if the correct license is assigned, if yes remove.
+                $assignment = $possibleAssignments[0]
                 foreach ($assignment in $possibleAssignments) {
                     
                 #if user is provisioned the cloudpc through this assignment, remove user from the group assignment
@@ -503,18 +504,21 @@ if ($graphtoken){
 
                         if ($null -ne $foundUser) {
                             #remove user from group
-                            Write-Host "User $($unusedCloudPC.UserPrincipalName) is consuming a license and is not using it; Entra ID group: $($assignment.id)"
-
+                            if ($simulationMode -eq $true){
+                                Write-Host "SIMULATEION MODE: Would remove license for $($unusedCloudPC.UserPrincipalName), user is member from Entra ID group: $($assignment.id)" -ForegroundColor Green
+                            } else {
+                                Write-Host "Removing license for $($unusedCloudPC.UserPrincipalName), removing user from Entra ID group: $($assignment.id)" -ForegroundColor Green
+                            }
                             if ($simulationMode -eq $false){
                                 #remove user from group
                                 $response = remove-groupMember -graphtoken $graphtoken -userId $unusedCloudPC.userId -groupId $unusedCloudPC.assignmentGroupId
                                 if ($response){
-                                    Write-Host "User $($unusedCloudPC.UserPrincipalName) removed from group with ID $($assignment.id)"
+                                    Write-Host "User $($unusedCloudPC.UserPrincipalName) succesfully removed from group with ID $($assignment.id)"
                                 } 
                             }
 
                         } else {
-                            Write-host "User $($unusedCloudPC.UserPrincipalName) should be in Group with ID $($assignment.id) but could ne be found."
+                            Write-host "User $($unusedCloudPC.UserPrincipalName) should be in Group with ID $($assignment.id) but could not be found."
                         }
                     } else {
                         Write-host "Cloud PC for $($unusedCloudPC.UserPrincipalName) is not part of assignment in group id: $($assignment.id) or cloud pc is not in provisioned state"
