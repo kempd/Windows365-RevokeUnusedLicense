@@ -15,7 +15,7 @@ Make sure to register an app in Entra ID and give it these Graph Permissions:
 It also requires permissions on Entra ID as well:
 - Create a custom role : `microsoft.directory/groups/members/read`
 
-- **OR** use athe built in role: `Directory Readers`
+- **OR** use the built in role: `Directory Readers`
 
 ## PARAMETERS
 
