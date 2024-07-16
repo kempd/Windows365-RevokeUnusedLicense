@@ -8,7 +8,7 @@ This script does not work if the license is assigned directly to a user.
 
 ## REQUIREMENTS
 Make sure to register an app in Entra ID and give it these Graph Permissions:
-- `DeviceManagementManagedDevices.Read.All` (To device identifiers from Intune)
+- `DeviceManagementManagedDevices.Read.All` (To fetch identifiers from Intune)
 - `GroupMember.ReadWrite.All` (To read and remove the groupmembership where the license is assigned)
 - `CloudPC.Read.All` (To fetch the last connection date from the Cloud PCs)
 

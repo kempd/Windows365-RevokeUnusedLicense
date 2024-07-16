@@ -9,7 +9,9 @@
   Make sure to register an app in Azure AD and give it these Graph Permissions:
     DeviceManagementManagedDevices.Read.All,
     GroupMember.ReadWrite.All	
-    CloudPC.Read.All	
+    CloudPC.Read.All
+  Add the following Entra ID role as well:
+    Directory Readers
 .PARAMETER $app_id
     provide the app id of the Entra AD app that has the required permissions
 .PARAMETER $app_secret
