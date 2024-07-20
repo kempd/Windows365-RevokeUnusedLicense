@@ -507,33 +507,33 @@ if ($graphtoken){
                         if ($null -ne $foundUser) {
                             #remove user from group
                             if ($simulationMode -eq $true){
-                                Write-Host "SIMULATEION MODE: Would remove license for $($unusedCloudPC.UserPrincipalName), user is member from Entra ID group: $($assignment.id)" -ForegroundColor Green
+                                Write-Output "SIMULATEION MODE: Would remove license for $($unusedCloudPC.UserPrincipalName), user is member from Entra ID group: $($assignment.id)"
                             } else {
-                                Write-Host "Removing license for $($unusedCloudPC.UserPrincipalName), removing user from Entra ID group: $($assignment.id)" -ForegroundColor Green
+                                Write-Output "Removing license for $($unusedCloudPC.UserPrincipalName), removing user from Entra ID group: $($assignment.id)" 
                             }
                             if ($simulationMode -eq $false){
                                 #remove user from group
                                 $response = remove-groupMember -graphtoken $graphtoken -userId $unusedCloudPC.userId -groupId $unusedCloudPC.assignmentGroupId
                                 if ($response){
-                                    Write-Host "User $($unusedCloudPC.UserPrincipalName) succesfully removed from group with ID $($assignment.id)"
+                                    Write-Output "User $($unusedCloudPC.UserPrincipalName) succesfully removed from group with ID $($assignment.id)"
                                 } 
                             }
 
                         } else {
-                            Write-host "User $($unusedCloudPC.UserPrincipalName) should be in Group with ID $($assignment.id) but could not be found."
+                            Write-Output "User $($unusedCloudPC.UserPrincipalName) should be in Group with ID $($assignment.id) but could not be found."
                         }
                     } else {
-                        Write-host "Cloud PC for $($unusedCloudPC.UserPrincipalName) is not part of assignment in group id: $($assignment.id) or cloud pc is not in provisioned state"
+                        Write-Output "Cloud PC for $($unusedCloudPC.UserPrincipalName) is not part of assignment in group id: $($assignment.id) or cloud pc is not in provisioned state"
                     }
                 }
 
             } else {
-                write-host "Cloud PC for $($unusedCloudPC.UserPrincipalName) is only recently provisioned, skipping"
+                Write-Output "Cloud PC for $($unusedCloudPC.UserPrincipalName) is only recently provisioned, skipping"
             }
         }
 
     } else {
-        write-host "No unused Cloud PCs found"
+        Write-Output "No unused Cloud PCs found"
         exit
     }
 }
