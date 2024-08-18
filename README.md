@@ -6,6 +6,13 @@ This script will revoke licenses from users that have not used their Windows 365
 
 This script does not work if the license is assigned directly to a user.
 
+More info can be found at:
+- [Automatically Remove Licenses of Unused Cloud PCs](
+https://kempeneers.eu/2024/07/14/automatically-remove-licenses-of-unused-cloud-pcs-and-prevent-paying-to-much/)
+- [Deploy the Windows 365 Automatic License Revocation Script in your Environment](
+https://kempeneers.eu/2024/07/20/deploy-windows-365-automatic-license-revocation-script-in-your-environment/)
+
+
 ## REQUIREMENTS
 Make sure to register an app in Entra ID and give it these Graph Permissions:
 - `DeviceManagementManagedDevices.Read.All` (To fetch identifiers from Intune)
